@@ -38,6 +38,7 @@ log_name = f"{optimizer.__name__}_alpha={alpha}"
 writer = SummaryWriter(log_dir=f"runs/{log_name}")
 print(f"Learning rate = {alpha}, Optimizer = {optimizer.__name__}")
 
+
 ### Main Optimization Loop ###
 
 optimizer = optim.SGD([w_hat, b_hat], lr=alpha) 
@@ -47,8 +48,6 @@ for t in range(n_iter):
     current_loss = SSE(linear_model(X_true, w_hat, b_hat),Y_obs)  # For tracking the loss.
     current_loss.backward()                                       # Compute gradients of loss function (scalar-vector).
     optimizer.step()                                              # Update W_hat and b_hat.
-    #if t % 1000 == 0 :
-        #print(f"t = {t}, loss = {current_loss}, W_hat = {w_hat.detach().numpy()}, b_hat = {b_hat.item()}")
 
     # Write the current values of the weights, and loss to the log.
     # global_step=t tells tensorboard at what step of the training this is.
