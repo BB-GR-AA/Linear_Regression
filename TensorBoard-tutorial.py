@@ -26,9 +26,9 @@ b_hat = torch.randn(1, dtype=torch.float64, requires_grad=True)
 
 ### Hyperparamters ### 
 
-alpha  = 0.005      # Learning rate.
-n_iter = 10000         # Time steps (epochs).
-optimizer = optim.SGD
+alpha  = 0.0000001      # Learning rate.
+n_iter = 2000         # Time steps (epochs).
+optimizer = optim.Adam
 
 
 ### TensorBoard Writer Setup ###
